@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'api/classes'
+const baseUrl = '/api/classes'
 
 const getAll = async () => {
   const request = axios.get(baseUrl)

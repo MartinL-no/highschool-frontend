@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'api/rooms'
+const baseUrl = '/api/rooms'
 
 const getAll = async () => {
   const request = axios.get(baseUrl)

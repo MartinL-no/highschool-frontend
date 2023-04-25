@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'api/bookings'
+const baseUrl = '/api/bookings'
 
 const create = async (newObject) => {
   const response = await axios.post(baseUrl, newObject)
