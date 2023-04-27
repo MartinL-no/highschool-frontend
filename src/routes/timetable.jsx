@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import studentsService from '../services/students'
+import GenericTimetable from '../components/genericTimetable'
 
 export default function Timetable() {
   const [timetable, setTimetable] = useState(null)
@@ -35,21 +36,14 @@ export default function Timetable() {
     })
 
   return (
-    <>
-      <table className="timetable">
-        <thead>
-          <tr>
-            <th>Day</th>
-            <th>Subject</th>
-            <th>Room</th>
-            <th>Start Time</th>
-            <th>End Time</th>
-          </tr>
-        </thead>
-       <tbody>
-        {timetableRows}
-       </tbody>
-      </table>
-    </>
+    <div className="timetable-page">
+      <h1>Your Timetable</h1>
+      <GenericTimetable
+        timetableRows={ timetableRows }
+        rowTwoTitle="Subject"
+        rowFourTitle="Start Time"
+        rowFiveTitle="EndTime"
+      />
+    </div>
   )
 }

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 
-import subjectsService from '../services/subjects'
-import roomsService from '../services/rooms'
-import AddBookingForm from '../components/addBookingForm';
-import SuggestTimes from '../components/suggestedTimes';
+import subjectsService from '../../services/subjects'
+import roomsService from '../../services/rooms'
+import AddBookingForm from './addBookingForm';
+import SuggestTimes from './suggestedTimes';
 
 export default function AddBooking() {
   const [subjects, setSubjects] = useState(null)
@@ -23,12 +23,10 @@ export default function AddBooking() {
   }
 
   return (
-    <>
+    <div className="add-booking-page">
+      <h1>Add Booking</h1>
       <SuggestTimes subjects={subjects}/>
-
       <AddBookingForm subjects={subjects}/>
-
-      
-    </>
+    </div>
   )
 }

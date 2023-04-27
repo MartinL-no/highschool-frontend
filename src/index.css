@@ -1,5 +1,7 @@
 html {
   box-sizing: border-box;
+  display: flex;
+  height: 100vh;
 }
 *,
 *:before,
@@ -13,6 +15,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  height: 100%;
+  width: 100%;
 }
 
 code {
@@ -22,13 +27,14 @@ code {
 
 html,
 body {
-  height: 100%;
   margin: 0;
   line-height: 1.5;
   color: #121212;
+  height: 100%;
 }
 textarea,
 input,
+select,
 button {
   font-size: 1rem;
   font-family: inherit;
@@ -47,6 +53,7 @@ button {
 
 textarea:hover,
 input:hover,
+select:hover,
 button:hover {
   box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.6), 0 1px 2px hsla(0, 0%, 0%, 0.2);
 }
@@ -108,6 +115,7 @@ form[action$="destroy"] button {
   border-right: solid 1px #e3e3e3;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 #sidebar > * {
@@ -129,6 +137,11 @@ form[action$="destroy"] button {
   border-top: 1px solid #e3e3e3;
   order: 1;
   line-height: 1;
+}
+
+h1>button {
+  margin-left: auto;
+  color: #f44250;
 }
 
 #sidebar h1::before {
@@ -247,6 +260,8 @@ i {
   flex: 1;
   padding: 2rem 4rem;
   width: 100%;
+  height: 100%;
+  overflow: auto;
 }
 
 #detail.loading {
@@ -256,12 +271,57 @@ i {
 }
 
 /*
+ * Pages
+ */
+
+.classes-page,
+.subjects-page,
+.add-booking-page,
+.timetable-page,
+.profile-page,
+.teachers-page,
+.students-page,
+.subject-page,
+.class-page,
+.add-student-page,
+.add-teacher-page,
+.add-subject-page {
+  margin-top: 2.75rem;
+  height: 100%;
+}
+
+.classes-page h1,
+.subjects-page h1 {
+  margin-bottom: 1rem;
+}
+
+.add-subject-page .checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+input[type=checkbox] {
+  width: 1em;
+  height: 1em;
+  box-shadow: none;
+  padding: 0;
+}
+
+.add-subject-page .checkbox {
+  display: flex;
+  gap: 1rem;
+}
+/*
  * Timetable
  */
 
- .timetable {
+.timetable {
   border: solid 1px lightgray;
-  border-collapse: collapse;
+  /*border-collapse: collapse;*/
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 8px;
 }
 
 .timetable > thead {
@@ -273,12 +333,29 @@ i {
 }
 
 /*
- * Classes list
+ * Classes / subjects
  */
 
- .classes-list {
-  list-style-type: none;
+ .classes-page a,
+ .subjects-page a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  white-space: pre;
+  padding: 0.5rem;
+  border-radius: 8px;
+  color: inherit;
+  text-decoration: none;
+  gap: 1rem;
 }
+
+.classes-page a:hover,
+.subjects-page a:hover {
+  background: #e3e3e3;
+}
+
 
 /*
  * Subjects list
@@ -349,9 +426,11 @@ i {
   margin: 0;
   padding: 0;
 }
+/*
 .booking-forms > p:first-child > :nth-child(2) {
   margin-right: 1rem;
 }
+*/
 .booking-forms > p:first-child,
 .booking-forms label {
   display: flex;
@@ -362,6 +441,7 @@ i {
 }
 .booking-forms p:first-child input,
 .booking-forms label input,
+.booking-forms label select,
 .booking-forms label textarea {
   flex-grow: 2;
 }
@@ -390,6 +470,25 @@ i {
 
 .booking-form p:last-child button[type="button"] {
   color: inherit;
+}
+.checkboxes input[type=checkbox] {
+  flex: none;
+}
+
+/*
+ * Suggested times
+ */
+
+ #suggested-time-form select {
+  flex: 2;
+}
+
+#suggested-time-form button {
+  margin-left: 0.75em;
+}
+
+#suggested-time-form + table {
+  margin-left: 8em;
 }
 
 #zero-state {

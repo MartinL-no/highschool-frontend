@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+
 import studentsService from '../services/students'
 
 export default function Subjects() {
@@ -11,18 +13,20 @@ export default function Subjects() {
       })
   }, [])
 
-
   if (student == null) {
     return null
   }
 
-  const subjectElements = student.subjects.map(sub => <li key={sub}>{sub}</li>)
-
+  console.log(student)
+  const subjectElements = student.subjects.map(sub =>
+    <Link key={sub} to={`/subjects/${sub.replace(/ /g, "")}/`}>
+      {sub}
+    </Link>
+  )
   return (
-    <>
-      <ul className="subjects-list">
+    <div className="subjects-page">
+        <h1>Your Subjects</h1>
         {subjectElements}
-      </ul>
-    </>
+    </div>
   )
 }

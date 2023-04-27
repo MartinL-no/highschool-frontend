@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react'
+import { Link } from "react-router-dom";
+
+
 import studentsService from '../services/students'
 
 export default function Classes() {
@@ -17,13 +20,19 @@ export default function Classes() {
     return <div>Loading...</div>
   }
   
-  const classElements = student.classes.map(c => <li key={c}>{c}</li>)
+  const classElements = student.classes.map(_class => (
+      <Link 
+        to={`/classes/${_class.replace(/ /g, "")}/`}
+        key={_class}
+      >
+        {_class}
+      </Link>
+  ))
 
   return (
-    <>
-      <ul className="classes-list">
+    <div className="classes-page">
+      <h1>Your Class</h1>
         {classElements}
-      </ul> 
-    </>
+    </div>
   )
 }
